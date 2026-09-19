@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mam Belen's Kitchen | Menu</title>
+    <style>
+        :root {
+            --primary: #800020; /* Deep Burgundy */
+            --accent: #E65100;  /* Rich Warm Orange */
+            --light-bg: #FFF8F0;
+            --dark-text: #2C2C2C;
+            --white: #FFFFFF;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--primary);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        }
+
+        .logo {
+            color: var(--white);
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url("Images/musbe.jpg") center/cover no-repeat;
+            height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 600px;
+        }
+
+        .btn {
+            background-color: var(--accent);
+            color: var(--white);
+            padding: 10px 24px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.2s, background-color 0.2s;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: #BF360C;
+            transform: translateY(-2px);
+        }
+
+        /* Menu Styles */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .category-title {
+            font-size: 1.8rem;
+            color: var(--primary);
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 8px;
+            margin: 40px 0 20px;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background-color: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: var(--primary);
+        }
+
+        .card-desc {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
+        .card-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: var(--accent);
+        }
+
+        /* Order CTA Section */
+        .order-section {
+            background-color: var(--primary);
+            color: var(--white);
+            text-align: center;
+            padding: 60px 20px;
+            margin-top: 50px;
+        }
+
+        .order-section h2 {
+            margin-bottom: 15px;
+            font-size: 2.2rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1A1A1A;
+            color: #AAA;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">MAM BELEN'S KITCHEN</div>
+        <ul class="nav-links">
+            <li><a href="#party-platters">Main Entrees</a></li>
+            <li><a href="#pasta-section">Pastas</a></li>
+            <li><a href="#desserts">Desserts</a></li>
+            <li><a href="#order">Order Now</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <h1>Mam Belen's Kitchen Menu</h1>
+        <p>Home foodies are the best buddies.</p>
+    </section>
+
+    <div class="container">
+
+        <h2 class="category-title" id="party-platters">Classic Main Entrees</h2>
+        <div class="menu-grid">
+            
+            <div class="card">
+                <img src="Images/Shainghai.png" alt="Meaty Shanghai" class="card-img">
+                <div class="card-content">
+                    <h3 class="card-title">Meaty Shanghai Platter</h3>
+                    <p class="card-desc">Crispy pork spring rolls packed with seasoned filling and served with sweet chili dip.</p>
+                    <div class="card-bottom">
+                        <span class="price">₱450 / Tray</span>
+                        <a href="#order" class="btn">Order</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="Images/bbq.jfif" alt="Barbeque" class="card-img">
+                <div class="card-content">
+                    <h3 class="card-title">Barbeque</h3>
+                    <p class="card-desc">Tender grilled pork skewers marinated in savory-sweet marinade.</p>
+                    <div class="card-bottom">
+                        <span class="price">₱520 / Tray</span>
+                        <a href="#order" class="btn">Order</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="Images/liempo.jfif" alt="Pork Liempo" class="card-img">
+                <div class="card-content">
+                    <h3 class="card-title">Pork Liempo</h3>
+                    <p class="card-desc">Grilled pork belly marinated to perfection with crispy skin and juicy layers.</p>
+                    <div class="card-bottom">
+                        <span class="price">₱520 / Tray</span>
+                        <a href="#order" class="btn">Order</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="Images/siomai.jfif" alt="Siomai" class="card-img">
+                <div class="card-content">
+                    <h3 class="card-title">Siomai</h3>
+                    <p class="card-desc">Steamed pork and shrimp dumplings served with soy-chili garlic dip.</p>
+                    <div class="card-bottom">
+                        <span class="price">₱380 / Tray</span>
+                        <a href="#order" class="btn">Order</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="Images/chicken.jfif" alt="Fried Chicken" class="card-img">
+                <div class="card-content">
+                    <h3 class="card-title">Crispy Fried Chicken</h3>
+                    <p class="card-desc">Juicy marinated fried chicken pieces with a thick, extra crunchy coating.</p>
+                    <div class="card-bottom">
+                        <span class="price">₱580 / Tray</span>
+                        <a href="#order" class="btn">Order</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="Images/Cordon.jfif" alt="Cordon Bleu" class="card-img">
+                <div class="card-content">
+                    <h3 class="card-title">Cordon Bleu</h3>
+                    <p class="card-desc">Crispy chicken rolls stuffed with ham and melted cheese, served with white sauce.</p>
+                    <div class="card-bottom">
+                        <span class="price">₱600 / Tray</span>
+                        <a href="#order" class="btn">Order</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <h2 class="category-title" id="pasta-section">Pastas & Noodles</h2>
+        <div class="menu-grid">
+
+            <div class="card">
+                <img src="Images/spags.jfif" alt="Sweet Style Spaghetti" class="card-img">
+                <div class="card-content">
+                    <h3 class="card-title">Sweet Style Spaghetti</h3>
+                    <p class="card-desc">Classic savory-sweet meat sauce topped with hotdog slices and grated cheese.</p>
+                    <div class="card-bottom">
+                        <span class="price">₱450 / Tray</span>
+                        <a href="#order" class="btn">Order</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="Images/Carbo.jfif" alt="Creamy Carbonara" class="card-img">
+                <div class="card-content">
+                    <h3 class="card-title">Creamy Carbonara</h3>
+                    <p class="card-desc">Rich and creamy white sauce pasta topped with savory bacon bits and parmesan.</p>
+                    <div class="card-bottom">
+                        <span class="price">₱500 / Tray</span>
+                        <a href="#order" class="btn">Order</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="Images/Bakemac.jfif" alt="Baked Macaroni" class="card-img">
+                <div class="card-content">
+                    <h3 class="card-title">Baked Macaroni</h3>
+                    <p class="card-desc">Savory elbow macaroni layered with sweet meat sauce and topped with a baked cheese crust.</p>
+                    <div class="card-bottom">
+                        <span class="price">₱500 / Tray</span>
+                        <a href="#order" class="btn">Order</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="Images/Lasag.jfif" alt="Lasagna" class="card-img">
+                <div class="card-content">
+                    <h3 class="card-title">Lasagna</h3>
+                    <p class="card-desc">Layered flat pasta with rich beef Bolognese sauce, creamy béchamel, and melted mozzarella.</p>
+                    <div class="card-bottom">
+                        <span class="price">₱600 / Tray</span>
+                        <a href="#order" class="btn">Order</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="Images/Pansit.jfif" alt="Pancit Canton" class="card-img">
+                <div class="card-content">
+                    <h3 class="card-title">Pansit Bihon</h3>
+                    <p class="card-desc">Stir-fried noodles loaded with fresh vegetables, pork, and seafood toppings.</p>
+                    <div class="card-bottom">
+                        <span class="price">₱450 / Tray</span>
+                        <a href="#order" class="btn">Order</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="Images/palabok.jfif" alt="Palabok" class="card-img">
+                <div class="card-content">
+                    <h3 class="card-title">Palabok</h3>
+                    <p class="card-desc">Rice noodles with savory shrimp sauce, chicharon bits, boiled eggs, and tinapa flakes.</p>
+                    <div class="card-bottom">
+                        <span class="price">₱480 / Tray</span>
+                        <a href="#order" class="btn">Order</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <h2 class="category-title" id="desserts">Desserts & Kakanin</h2>
+        <div class="menu-grid">
+
+            <div class="card">
+                <img src="Images/putoo.jfif" alt="Cheesy Puto" class="card-img">
+                <div class="card-content">
+                    <h3 class="card-title">Cheesy Puto</h3>
+                    <p class="card-desc">Soft, fluffy steamed rice cakes topped with melted slice cheese.</p>
+                    <div class="card-bottom">
+                        <span class="price">₱200 / Pack</span>
+                        <a href="#order" class="btn">Order</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="Images/pilpit.jfif" alt="Pilipit" class="card-img">
+                <div class="card-content">
+                    <h3 class="card-title">Pilipit</h3>
+                    <p class="card-desc">Traditional twisted sticky rice donuts coated in caramelized sugar glaze.</p>
+                    <div class="card-bottom">
+                        <span class="price">₱150 / Pack</span>
+                        <a href="#order" class="btn">Order</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="Images/kutsinta.jfif" alt="Kutsinta" class="card-img">
+                <div class="card-content">
+                    <h3 class="card-title">Kutsinta</h3>
+                    <p class="card-desc">Chewy brown rice cakes served with freshly grated coconut topping.</p>
+                    <div class="card-bottom">
+                        <span class="price">₱180 / Pack</span>
+                        <a href="#order" class="btn">Order</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="Images/maja.jfif" alt="Maja Blanca" class="card-img">
+                <div class="card-content">
+                    <h3 class="card-title">Maja Blanca</h3>
+                    <p class="card-desc">Creamy coconut milk pudding studded with sweet corn kernels and topped with latik.</p>
+                    <div class="card-bottom">
+                        <span class="price">₱250 / Tray</span>
+                        <a href="#order" class="btn">Order</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="Images/sinukmani.jfif" alt="Sinukmani" class="card-img">
+                <div class="card-content">
+                    <h3 class="card-title">Sinukmani</h3>
+                    <p class="card-desc">Classic Filipino sweet sticky rice cake cooked with rich coconut milk and sugar.</p>
+                    <div class="card-bottom">
+                        <span class="price">₱250 / Tray</span>
+                        <a href="#order" class="btn">Order</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="Images/palitaw.jfif" alt="Palitaw" class="card-img">
+                <div class="card-content">
+                    <h3 class="card-title">Palitaw</h3>
+                    <p class="card-desc">Soft flat rice cakes rolled in fresh coconut, toasted sesame seeds, and sugar.</p>
+                    <div class="card-bottom">
+                        <span class="price">₱150 / Pack</span>
+                        <a href="#order" class="btn">Order</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <section class="order-section" id="order">
+        <h2>Ready to Place Your Order?</h2>
+        <p style="margin-bottom: 20px;">We accept pre-orders for catering, parties, and daily deliveries.</p>
+        <a href="https://wa.me/1234567890" class="btn" style="background-color: var(--white); color: var(--primary);">Message Us to Order</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Mam Belen's Kitchen. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
